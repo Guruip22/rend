@@ -1,0 +1,13 @@
+%%writefile render.yaml
+services:
+  - type: cronjob
+    name: qqq-trading-strategy
+    schedule: "0 * * * *" # Run hourly at the start of the hour
+    plan: free # Or your desired plan
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python strategy.py"
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
